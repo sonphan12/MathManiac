@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_play"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#26a69a"
+    tools:context="com.example.user.mathmaniac.MainMenuActivity">
+
+    <ProgressBar
+        android:id="@+id/time"
+        android:max="100"
+        android:progress="100"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/colorWhite"
+        android:progressBackgroundTint="#26a69a"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/dp30"
+            android:fontFamily="serif"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textColor="#ffffff"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/highScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="0"
+            android:gravity="right"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dp30" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp160"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/numA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:fontFamily="serif"
+                android:gravity="end"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp120" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp120" />
+
+            <TextView
+                android:id="@+id/numB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:fontFamily="serif"
+                android:gravity="start"
+                android:text="2"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp120" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_below="@id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp160"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:gravity="end"
+                android:text="="
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp120" />
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:gravity="start"
+                android:text="3"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp120" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gameOver"
+            android:layout_width="@dimen/dp250"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E2B37"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Game Over"
+                android:gravity="center_horizontal"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp30"
+                android:fontFamily="serif"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="Your score:"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dp30"
+                    android:fontFamily="serif"/>
+                <TextView
+                    android:id="@+id/resultYourScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="0"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dp30"
+                    android:fontFamily="serif"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="High score:"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dp30"
+                    android:fontFamily="serif"/>
+                <TextView
+                    android:id="@+id/resultHighScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="0"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dp30"
+                    android:fontFamily="serif"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageButton
+                    android:id="@+id/continuePlay"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:src="@drawable/rsz_1play_image"/>
+                <ImageButton
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:id="@+id/menu"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rsz_1menu"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="10.5">
+        <ImageButton
+            android:id="@+id/btnYes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:layout_weight="5"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:src="@drawable/yes"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"></LinearLayout>
+        <ImageButton
+            android:id="@+id/btnNo"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:layout_weight="5"
+            android:src="@drawable/nope"/>
+    </LinearLayout>
+
+</LinearLayout>

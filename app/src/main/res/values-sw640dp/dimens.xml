@@ -1,0 +1,11 @@
+<resources>
+<!--Defaultscreenmargins,pertheAndroidDesignguidelines.-->
+<dimen name="activity_horizontal_margin">20.8dp</dimen>
+<dimen name="activity_vertical_margin">20.8dp</dimen>
+<dimen name="dp30">39.0dp</dimen>
+<dimen name="dp60">78.0dp</dimen>
+<dimen name="dp80">104.0dp</dimen>
+<dimen name="dp120">156.0dp</dimen>
+<dimen name="dp160">208.0dp</dimen>
+
+</resources>

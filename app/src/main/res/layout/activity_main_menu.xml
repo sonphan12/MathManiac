@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main_menu"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#26a69a"
+    tools:context="com.example.user.mathmaniac.MainMenuActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="@dimen/dp60"
+        android:src="@drawable/math_logo"
+        android:id="@+id/imageView" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Math Maniac"
+        android:textColor="@color/colorWhite"
+        android:fontFamily="serif"
+        android:textSize="@dimen/dp60"
+        android:gravity="center_horizontal"/>
+
+    <ImageView
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/dp30"
+        android:src="@drawable/play_image"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end|bottom"
+        android:text="Son Phan"
+        android:fontFamily="serif"/>
+
+
+</LinearLayout>
