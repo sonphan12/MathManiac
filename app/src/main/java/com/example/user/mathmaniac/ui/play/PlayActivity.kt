@@ -62,7 +62,7 @@ class PlayActivity : AppCompatActivity() {
                 gameActivity()
                 return@setOnClickListener
             }
-            lose(false, isHighScore)
+            lose(isHighScore)
         }
 
         btnNo.setOnClickListener {
@@ -81,7 +81,7 @@ class PlayActivity : AppCompatActivity() {
                 gameActivity()
                 return@setOnClickListener
             }
-            lose(false, isHighScore)
+            lose(isHighScore)
         }
 
         continuePlay.setOnClickListener {
@@ -137,7 +137,7 @@ class PlayActivity : AppCompatActivity() {
                 }
 
                 override fun onFinish() {
-                    lose(true, isHighScore)
+                    lose(isHighScore)
                 }
             }.start()
         }
@@ -154,14 +154,10 @@ class PlayActivity : AppCompatActivity() {
         playGameOver?.release()
     }
 
-    private fun lose(isTimeOut: Boolean, isHighScore: Boolean) {
+    private fun lose(isHighScore: Boolean) {
+        timer?.cancel()
         playGameOver?.start()
         isLose = true
-        if (isTimeOut) {
-            if (vScore != 0) {
-                timer?.cancel()
-            }
-        }
         val anim = AnimationUtils.loadAnimation(applicationContext, R.anim.shake)
         activityPlay.startAnimation(anim)
         anim.setAnimationListener(object : Animation.AnimationListener {
