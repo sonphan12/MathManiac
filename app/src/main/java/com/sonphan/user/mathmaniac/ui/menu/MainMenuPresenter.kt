@@ -6,4 +6,9 @@ class MainMenuPresenter: BasePresenter<IMainMenuView>() {
     fun onPlayClicked() {
         mView?.navigateToPlay()
     }
+
+    fun onLoginSuccess() {
+        mView?.toastLoginSuccess()
+    }
+    fun onLoginFailed() = mView?.toastLoginError()
 }

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Math Maniac</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">510164189484809</string>
+    <string name="fb_login_protocol_scheme">fb510164189484809</string>
+    <string name="login_error">Login failed!</string>
+    <string name="login_success">Login successfully!</string>
 </resources>
