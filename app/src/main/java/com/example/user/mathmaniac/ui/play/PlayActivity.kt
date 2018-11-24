@@ -1,4 +1,4 @@
-package com.example.user.mathmaniac.ui
+package com.example.user.mathmaniac.ui.play
 
 import android.content.Context
 import android.content.Intent
