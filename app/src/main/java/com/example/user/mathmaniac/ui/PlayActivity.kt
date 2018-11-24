@@ -60,7 +60,9 @@ class PlayActivity : AppCompatActivity() {
                 }
                 score.text = vScore.toString()
                 gameActivity()
+                return@setOnClickListener
             }
+            lose(false, isHighScore)
         }
 
         btnNo.setOnClickListener {
@@ -70,14 +72,16 @@ class PlayActivity : AppCompatActivity() {
                     timer?.cancel()
                 }
                 vScore += 1
-                if (vScore > Integer.parseInt(highScore!!.text.toString())) {
+                if (vScore > Integer.parseInt(highScore.text.toString())) {
                     vHighScore = vScore
                     highScore.text = vScore.toString()
                     isHighScore = true
                 }
                 score.text = vScore.toString()
                 gameActivity()
+                return@setOnClickListener
             }
+            lose(false, isHighScore)
         }
 
         continuePlay.setOnClickListener {
