@@ -1,10 +1,10 @@
-package com.example.user.mathmaniac.ui.menu
+package com.sonphan.user.mathmaniac.ui.menu
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.user.mathmaniac.R
-import com.example.user.mathmaniac.ui.play.PlayActivity
+import com.sonphan.user.mathmaniac.ui.play.PlayActivity
 import kotlinx.android.synthetic.main.activity_main_menu.*
 
 class MainMenuActivity : AppCompatActivity(), IMainMenuView {

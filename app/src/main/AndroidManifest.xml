@@ -11,14 +11,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.menu.MainMenuActivity">
+        <activity android:name="com.sonphan.user.mathmaniac.ui.menu.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.play.PlayActivity"></activity>
+        <activity android:name="com.sonphan.user.mathmaniac.ui.play.PlayActivity"></activity>
     </application>
 
 </manifest>

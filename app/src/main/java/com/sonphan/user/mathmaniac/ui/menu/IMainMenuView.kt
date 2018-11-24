@@ -1,4 +1,4 @@
-package com.example.user.mathmaniac.ui.menu
+package com.sonphan.user.mathmaniac.ui.menu
 
 interface IMainMenuView {
     fun navigateToPlay()
