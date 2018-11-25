@@ -4,4 +4,9 @@
     <string name="fb_login_protocol_scheme">fb510164189484809</string>
     <string name="login_error">Login failed!</string>
     <string name="login_success">Login successfully!</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">1ERrFz3OfTgiMhEdrJSIHQ7DBt8qMWAahQRoYkgc</string>
+    <string name="back4app_client_key">TlFcrtQ8nYc1NF7Oe5lmr7OBxsYL1HT5GbgrBXdw</string>
 </resources>

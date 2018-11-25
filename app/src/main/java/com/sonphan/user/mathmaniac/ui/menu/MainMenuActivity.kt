@@ -11,6 +11,7 @@ import com.sonphan.user.mathmaniac.AndroidApplication
 import com.sonphan.user.mathmaniac.data.FacebookPermissionConstants
 import com.sonphan.user.mathmaniac.data.local.MathManiacLocalRepository
 import com.sonphan.user.mathmaniac.data.remote.MathManiacFacebookRepository
+import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteRepository
 import com.sonphan.user.mathmaniac.ui.play.PlayActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main_menu.*
@@ -28,7 +29,8 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
                         (this.application as AndroidApplication).getLocalPlayerDao(),
                         (this.application as AndroidApplication).getLocalFacebookFriendDao(),
                         this.applicationContext),
-                MathManiacFacebookRepository()
+                MathManiacFacebookRepository(),
+                MathManiacRemoteRepository()
         )
         btnPlay.setOnClickListener { mPresenter.onPlayClicked() }
         initLoginFacebook()
