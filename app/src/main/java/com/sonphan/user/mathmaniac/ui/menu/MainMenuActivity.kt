@@ -25,7 +25,9 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
-        mPresenter = MainMenuPresenter(MathManiacLocalRepository((this.application as AndroidApplication).getPlayerDao(), this.applicationContext))
+        mPresenter = MainMenuPresenter(MathManiacLocalRepository((this.application as AndroidApplication).getLocalPlayerDao(),
+                (this.application as AndroidApplication).getLocalFacebookFriendDao(),
+                this.applicationContext))
         btnPlay.setOnClickListener { mPresenter.onPlayClicked() }
 
         initLoginFacebook()

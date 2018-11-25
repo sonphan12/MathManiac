@@ -3,24 +3,28 @@ package com.sonphan.user.mathmaniac
 import android.app.Application
 import com.sonphan.user.mathmaniac.data.model.DaoMaster
 import com.sonphan.user.mathmaniac.data.model.DaoSession
-import com.sonphan.user.mathmaniac.data.model.PlayerDao
+import com.sonphan.user.mathmaniac.data.model.LocalFacebookFriendDao
+import com.sonphan.user.mathmaniac.data.model.LocalPlayerDao
 
 class AndroidApplication: Application() {
     private lateinit var mDaoMaster: DaoMaster
     private lateinit var mDaoSession: DaoSession
-    private lateinit var mPlayerDao: PlayerDao
+    private lateinit var mLocalPlayerDao: LocalPlayerDao
+    private lateinit var mLocalFacebookFriendDao: LocalFacebookFriendDao
     override fun onCreate() {
         super.onCreate()
         initGreenDao()
     }
 
     private fun initGreenDao() {
-        val helper = DaoMaster.DevOpenHelper(this, "players-db", null)
+        val helper = DaoMaster.DevOpenHelper(this, "mathmaniac-db", null)
         val db = helper.writableDatabase
         mDaoMaster = DaoMaster(db)
         mDaoSession = mDaoMaster.newSession()
-        mPlayerDao = mDaoSession.playerDao
+        mLocalPlayerDao = mDaoSession.localPlayerDao
+        mLocalFacebookFriendDao = mDaoSession.localFacebookFriendDao
     }
 
-    fun getPlayerDao() = mPlayerDao
+    fun getLocalPlayerDao() = mLocalPlayerDao
+    fun getLocalFacebookFriendDao() = mLocalFacebookFriendDao
 }
