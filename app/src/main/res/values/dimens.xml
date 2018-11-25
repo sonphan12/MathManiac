@@ -8,6 +8,8 @@
     <dimen name="dp120">120dp</dimen>
     <dimen name="dp160">160dp</dimen>
     <dimen name="dp250">250dp</dimen>
-    <dimen name="dphalf">0.5dp</dimen>
+    <dimen name="dpHalf">0.5dp</dimen>
+
+    <dimen name="leaderboard_title_text_size">20sp</dimen>
 
 </resources>
