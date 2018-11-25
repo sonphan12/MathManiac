@@ -10,6 +10,7 @@ import com.facebook.login.LoginResult
 import com.sonphan.user.mathmaniac.AndroidApplication
 import com.sonphan.user.mathmaniac.data.FacebookPermissionConstants
 import com.sonphan.user.mathmaniac.data.local.MathManiacLocalRepository
+import com.sonphan.user.mathmaniac.data.model.LocalPlayer
 import com.sonphan.user.mathmaniac.data.remote.MathManiacFacebookRepository
 import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteRepository
 import com.sonphan.user.mathmaniac.ui.play.PlayActivity
@@ -20,10 +21,12 @@ import kotlinx.android.synthetic.main.activity_main_menu.*
 class MainMenuActivity : AppCompatActivity(), IMainMenuView {
     private lateinit var mPresenter: MainMenuPresenter
     private val mCallBackManager = CallbackManager.Factory.create()
+    private lateinit var mLeaderBoardDialog: LeaderBoardDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
+        mLeaderBoardDialog = LeaderBoardDialog(this)
         mPresenter = MainMenuPresenter(
                 MathManiacLocalRepository(
                         (this.application as AndroidApplication).getLocalPlayerDao(),
@@ -33,6 +36,7 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
                 MathManiacRemoteRepository()
         )
         btnPlay.setOnClickListener { mPresenter.onPlayClicked() }
+        btnRank.setOnClickListener { mPresenter.onRankClicked() }
         initLoginFacebook()
     }
 
@@ -81,4 +85,10 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
 
     override fun toastLoginSuccess() = Toasty.success(this, getString(R.string.login_success)
             , Toast.LENGTH_SHORT, true).show()
+
+    override fun showLeaderBoardDialog() = mLeaderBoardDialog.show()
+
+    override fun hideLeaderBoardDialog() = mLeaderBoardDialog.cancel()
+
+    override fun setLeaderBoardData(listData: List<LocalPlayer>) = mLeaderBoardDialog.setData(listData)
 }

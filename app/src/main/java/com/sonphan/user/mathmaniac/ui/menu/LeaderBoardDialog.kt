@@ -2,7 +2,6 @@ package com.sonphan.user.mathmaniac.ui.menu
 
 import android.app.Dialog
 import android.content.Context
-import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,20 +10,19 @@ import com.example.user.mathmaniac.R
 import com.sonphan.user.mathmaniac.data.model.LocalPlayer
 import kotlinx.android.synthetic.main.dialog_leaderboard.*
 
-class LeaderBoardDialog constructor(private val mContext: Context) : Dialog(mContext) {
-    lateinit var adapter: LeaderBoardAdapter
+class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
+    private val mAdapter: LeaderBoardAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.dialog_leaderboard)
-        adapter = LeaderBoardAdapter(mContext, ArrayList())
-        rvLeaderBoard.adapter = adapter
+    init {
+        this.setContentView(R.layout.dialog_leaderboard)
+        mAdapter = LeaderBoardAdapter(mContext, ArrayList())
+        rvLeaderBoard.adapter = mAdapter
         rvLeaderBoard.layoutManager = LinearLayoutManager(mContext)
     }
 
-    fun setData(listData: List<LocalPlayer>) = adapter.setListData(listData)
+    fun setData(listData: List<LocalPlayer>) = mAdapter.setListData(listData)
 
-    class LeaderBoardAdapter constructor(val mContext: Context, var mListData: List<LocalPlayer>)
+    class LeaderBoardAdapter constructor(private val mContext: Context, var mListData: List<LocalPlayer>)
         : RecyclerView.Adapter<PlayerHolder>() {
         override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): PlayerHolder {
             val view = LayoutInflater.from(mContext).inflate(R.layout.item_player, viewGroup, false)

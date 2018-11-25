@@ -11,11 +11,13 @@ import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteStore
 import com.sonphan.user.mathmaniac.ui.BasePresenter
 import com.sonphan.user.mathmaniac.ultility.UserUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class MainMenuPresenter constructor(private val mLocalRepository: MathManiacLocalStore.Repository,
                                     private val mRemoteFacebookRepository: MathManiacFacebookStore.Repository,
                                     private val mRemoteRepository: MathManiacRemoteStore.Repository) : BasePresenter<IMainMenuView>() {
+    private val mSubscription = CompositeDisposable()
     fun onPlayClicked() {
         mView?.navigateToPlay()
     }
@@ -59,4 +61,22 @@ class MainMenuPresenter constructor(private val mLocalRepository: MathManiacLoca
                 .subscribeOn(Schedulers.io())
                 .subscribe()
     }
+
+    fun onRankClicked() {
+        if (UserUtil.getUser() == null) {
+            return
+        }
+        mSubscription.add(
+                mLocalRepository.getPlayer(UserUtil.getUser()!!.fbId)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe { localPlayer ->
+                            run {
+                                val listData = ArrayList<LocalPlayer>()
+                                listData.add(localPlayer)
+                                mView?.setLeaderBoardData(listData)
+                                mView?.showLeaderBoardDialog()
+                            }
+                        }
+        ) }
 }
