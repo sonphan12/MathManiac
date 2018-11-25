@@ -2,7 +2,7 @@ package com.sonphan.user.mathmaniac.data.model
 
 import com.parse.ParseObject
 
-class RemotePlayer(id: Long, name: String, avatarUrl: String, highScore: Int) {
+data class RemotePlayer(val id: Long, val name: String, val avatarUrl: String, val highScore: Int) {
     private val mPlayer = ParseObject.create("Player")
 
     init {
