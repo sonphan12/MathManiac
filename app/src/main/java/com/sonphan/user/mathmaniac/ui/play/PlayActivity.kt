@@ -48,6 +48,9 @@ class PlayActivity : AppCompatActivity() {
 
     private fun addEvents() {
         btnYes.setOnClickListener {
+            if (isLose) {
+                return@setOnClickListener
+            }
             if (vNumA + vNumB == vResult) {
                 playSuccess?.start()
                 if (vScore != 0) {
@@ -67,6 +70,9 @@ class PlayActivity : AppCompatActivity() {
         }
 
         btnNo.setOnClickListener {
+            if (isLose) {
+                return@setOnClickListener
+            }
             if (vNumA + vNumB != vResult) {
                 playSuccess?.start()
                 if (vScore != 0) {
