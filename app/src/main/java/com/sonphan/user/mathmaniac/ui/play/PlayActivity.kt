@@ -11,6 +11,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.user.mathmaniac.R
+import com.sonphan.user.mathmaniac.data.SharedPreferencesConstants
 import kotlinx.android.synthetic.main.activity_play.*
 import java.util.*
 
@@ -37,8 +38,8 @@ class PlayActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         //Get high score
-        val pref = getSharedPreferences("highScore", Context.MODE_PRIVATE)
-        vHighScore = pref.getInt("highScore", 0)
+        val pref = getSharedPreferences(SharedPreferencesConstants.HIGH_SCORE_NAME, Context.MODE_PRIVATE)
+        vHighScore = pref.getInt(SharedPreferencesConstants.HIGH_SCORE_KEY, 0)
         highScore.text = vHighScore.toString()
 
         playSuccess = MediaPlayer.create(applicationContext, R.raw.success)
