@@ -1,26 +1,30 @@
 package com.sonphan.mathmaniac.data.model;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Keep;
 
 @Entity(indexes = {@Index(value = "fbId", unique = true)})
-public class LocalFacebookFriend {
+public class PlayerEntity {
     public long fbId;
     public String displayName;
     public String avatarUrl;
-    @Generated(hash = 1560582075)
-    public LocalFacebookFriend(long fbId, String displayName, String avatarUrl) {
+    public int highScore;
+    @Keep
+    public PlayerEntity(long fbId, String displayName, String avatarUrl, int highScore) {
         this.fbId = fbId;
         this.displayName = displayName;
         this.avatarUrl = avatarUrl;
+        this.highScore = highScore;
     }
-    @Generated(hash = 1285053618)
-    public LocalFacebookFriend() {
+    @Keep
+    public PlayerEntity() {
     }
     @Override
     public String toString() {
-        return "LocalFacebookFriend: " + fbId + ", \n" + displayName + ", \n" + avatarUrl;
+        return "PlayerEntity: " + fbId + ", \n" + displayName + ", \n" + avatarUrl + ", \n" + highScore;
     }
     public long getFbId() {
         return this.fbId;
@@ -39,5 +43,11 @@ public class LocalFacebookFriend {
     }
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+    public int getHighScore() {
+        return this.highScore;
+    }
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
     }
 }

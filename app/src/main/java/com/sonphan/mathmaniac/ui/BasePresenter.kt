@@ -1,11 +1,17 @@
-package com.sonphan.user.mathmaniac.ui
+package com.sonphan.mathmaniac.ui
 
-open class BasePresenter<V> {
-    protected var mView: V? = null
+import io.reactivex.disposables.CompositeDisposable
+
+abstract class BasePresenter<V> {
+    protected var view: V? = null
+
+    protected var compositeDisposable = CompositeDisposable()
+
     fun attachView(view: V) {
-        mView = view
+        this.view = view
     }
     fun detachView() {
-        mView = null
+        view = null
+        compositeDisposable.dispose()
     }
 }

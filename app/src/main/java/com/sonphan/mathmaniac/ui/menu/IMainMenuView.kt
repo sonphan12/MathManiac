@@ -1,6 +1,7 @@
 package com.sonphan.mathmaniac.ui.menu
 
-import com.sonphan.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.Player
+import com.sonphan.mathmaniac.data.model.PlayerEntity
 
 interface IMainMenuView {
     fun navigateToPlay()
@@ -8,5 +9,5 @@ interface IMainMenuView {
     fun toastLoginSuccess()
     fun showLeaderBoardDialog()
     fun hideLeaderBoardDialog()
-    fun setLeaderBoardData(listData: List<LocalPlayer>)
+    fun setLeaderBoardData(listData: List<Player>)
 }

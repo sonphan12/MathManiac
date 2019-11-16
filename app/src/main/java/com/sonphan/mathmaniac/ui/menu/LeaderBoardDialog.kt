@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.user.mathmaniac.R
-import com.sonphan.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.Player
 import kotlinx.android.synthetic.main.dialog_leaderboard.*
 
 class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
@@ -20,9 +20,9 @@ class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
         rvLeaderBoard.layoutManager = LinearLayoutManager(mContext)
     }
 
-    fun setData(listData: List<LocalPlayer>) = mAdapter.setListData(listData)
+    fun setData(listData: List<Player>) = mAdapter.setListData(listData)
 
-    class LeaderBoardAdapter constructor(private val mContext: Context, var mListData: List<LocalPlayer>)
+    class LeaderBoardAdapter constructor(private val mContext: Context, var mListData: List<Player>)
         : RecyclerView.Adapter<PlayerHolder>() {
         override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): PlayerHolder {
             val view = LayoutInflater.from(mContext).inflate(R.layout.item_player, viewGroup, false)
@@ -41,10 +41,10 @@ class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
 
         override fun getItemId(position: Int): Long {
             val player = mListData[position]
-            return player.fbId
+            return player.id
         }
 
-        fun setListData(listData: List<LocalPlayer>) {
+        fun setListData(listData: List<Player>) {
             this.mListData = listData
             notifyDataSetChanged()
         }

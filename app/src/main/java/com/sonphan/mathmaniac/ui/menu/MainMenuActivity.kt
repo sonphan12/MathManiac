@@ -9,10 +9,8 @@ import com.facebook.*
 import com.facebook.login.LoginResult
 import com.sonphan.mathmaniac.AndroidApplication
 import com.sonphan.mathmaniac.data.FacebookPermissionConstants
-import com.sonphan.mathmaniac.data.local.MathManiacLocalRepository
-import com.sonphan.mathmaniac.data.model.LocalPlayer
-import com.sonphan.user.mathmaniac.data.remote.MathManiacFacebookRepository
-import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteRepository
+import com.sonphan.mathmaniac.data.local.MathManiacRepositoryImpl
+import com.sonphan.mathmaniac.data.model.Player
 import com.sonphan.mathmaniac.ui.play.PlayActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main_menu.*
@@ -28,12 +26,11 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
         setContentView(R.layout.activity_main_menu)
         mLeaderBoardDialog = LeaderBoardDialog(this)
         mPresenter = MainMenuPresenter(
-                MathManiacLocalRepository(
-                        (this.application as AndroidApplication).getLocalPlayerDao(),
-                        (this.application as AndroidApplication).getLocalFacebookFriendDao(),
-                        this.applicationContext),
-                MathManiacFacebookRepository(),
-                MathManiacRemoteRepository()
+                MathManiacRepositoryImpl(
+                        (this.application as AndroidApplication).playerDao,
+                        (this.application as AndroidApplication).mfacebookFriendDao,
+                        this.applicationContext
+                )
         )
         btnPlay.setOnClickListener { mPresenter.onPlayClicked() }
         btnRank.setOnClickListener { mPresenter.onRankClicked() }
@@ -90,5 +87,5 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
 
     override fun hideLeaderBoardDialog() = mLeaderBoardDialog.cancel()
 
-    override fun setLeaderBoardData(listData: List<LocalPlayer>) = mLeaderBoardDialog.setData(listData)
+    override fun setLeaderBoardData(listData: List<Player>) = mLeaderBoardDialog.setData(listData)
 }
