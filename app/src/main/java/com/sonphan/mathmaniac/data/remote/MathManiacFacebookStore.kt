@@ -1,6 +1,6 @@
 package com.sonphan.user.mathmaniac.data.remote
 
-import com.sonphan.user.mathmaniac.data.model.RemoteFacebookFriend
+import com.sonphan.mathmaniac.data.model.RemoteFacebookFriend
 import io.reactivex.Observable
 
 interface MathManiacFacebookStore {

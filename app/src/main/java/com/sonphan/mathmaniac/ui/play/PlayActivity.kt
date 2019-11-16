@@ -1,4 +1,4 @@
-package com.sonphan.user.mathmaniac.ui.play
+package com.sonphan.mathmaniac.ui.play
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.user.mathmaniac.R
-import com.sonphan.user.mathmaniac.data.SharedPreferencesConstants
+import com.sonphan.mathmaniac.data.SharedPreferencesConstants
 import kotlinx.android.synthetic.main.activity_play.*
 import java.util.*
 

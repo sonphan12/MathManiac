@@ -1,12 +1,12 @@
-package com.sonphan.user.mathmaniac
+package com.sonphan.mathmaniac
 
 import android.app.Application
 import com.example.user.mathmaniac.R
 import com.parse.Parse
-import com.sonphan.user.mathmaniac.data.model.DaoMaster
-import com.sonphan.user.mathmaniac.data.model.DaoSession
-import com.sonphan.user.mathmaniac.data.model.LocalFacebookFriendDao
-import com.sonphan.user.mathmaniac.data.model.LocalPlayerDao
+import com.sonphan.mathmaniac.data.model.DaoMaster
+import com.sonphan.mathmaniac.data.model.DaoSession
+import com.sonphan.mathmaniac.data.model.LocalFacebookFriendDao
+import com.sonphan.mathmaniac.data.model.LocalPlayerDao
 
 class AndroidApplication: Application() {
     private lateinit var mDaoMaster: DaoMaster

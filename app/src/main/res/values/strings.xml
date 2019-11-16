@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Math Maniac</string>
-    <string name="facebook_app_id">510164189484809</string>
-    <string name="fb_login_protocol_scheme">fb510164189484809</string>
+    <string name="facebook_app_id">458959205050967</string>
+    <string name="fb_login_protocol_scheme">fb458959205050967</string>
     <string name="login_error">Login failed!</string>
     <string name="login_success">Login successfully!</string>
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>

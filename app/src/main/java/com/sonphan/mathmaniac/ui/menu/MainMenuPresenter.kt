@@ -1,15 +1,15 @@
-package com.sonphan.user.mathmaniac.ui.menu
+package com.sonphan.mathmaniac.ui.menu
 
 import android.net.Uri
 import android.util.Log
 import com.facebook.AccessToken
-import com.sonphan.user.mathmaniac.data.local.MathManiacLocalStore
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
-import com.sonphan.user.mathmaniac.data.model.RemotePlayer
+import com.sonphan.mathmaniac.data.local.MathManiacLocalStore
+import com.sonphan.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.RemotePlayer
 import com.sonphan.user.mathmaniac.data.remote.MathManiacFacebookStore
 import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteStore
 import com.sonphan.user.mathmaniac.ui.BasePresenter
-import com.sonphan.user.mathmaniac.ultility.UserUtil
+import com.sonphan.mathmaniac.ultility.UserUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

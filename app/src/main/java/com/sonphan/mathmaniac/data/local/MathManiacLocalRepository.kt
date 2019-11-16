@@ -1,11 +1,11 @@
-package com.sonphan.user.mathmaniac.data.local
+package com.sonphan.mathmaniac.data.local
 
 import android.content.Context
-import com.sonphan.user.mathmaniac.data.SharedPreferencesConstants
-import com.sonphan.user.mathmaniac.data.model.LocalFacebookFriend
-import com.sonphan.user.mathmaniac.data.model.LocalFacebookFriendDao
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
-import com.sonphan.user.mathmaniac.data.model.LocalPlayerDao
+import com.sonphan.mathmaniac.data.SharedPreferencesConstants
+import com.sonphan.mathmaniac.data.model.LocalFacebookFriend
+import com.sonphan.mathmaniac.data.model.LocalFacebookFriendDao
+import com.sonphan.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.LocalPlayerDao
 import io.reactivex.Observable
 
 class MathManiacLocalRepository constructor(val mLocalPlayerDao: LocalPlayerDao,

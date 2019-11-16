@@ -1,6 +1,6 @@
-package com.sonphan.user.mathmaniac.ui.menu
+package com.sonphan.mathmaniac.ui.menu
 
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.LocalPlayer
 
 interface IMainMenuView {
     fun navigateToPlay()

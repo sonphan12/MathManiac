@@ -1,4 +1,4 @@
-package com.sonphan.user.mathmaniac.ui.menu
+package com.sonphan.mathmaniac.ui.menu
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,13 @@ import android.widget.Toast
 import com.example.user.mathmaniac.R
 import com.facebook.*
 import com.facebook.login.LoginResult
-import com.sonphan.user.mathmaniac.AndroidApplication
-import com.sonphan.user.mathmaniac.data.FacebookPermissionConstants
-import com.sonphan.user.mathmaniac.data.local.MathManiacLocalRepository
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.AndroidApplication
+import com.sonphan.mathmaniac.data.FacebookPermissionConstants
+import com.sonphan.mathmaniac.data.local.MathManiacLocalRepository
+import com.sonphan.mathmaniac.data.model.LocalPlayer
 import com.sonphan.user.mathmaniac.data.remote.MathManiacFacebookRepository
 import com.sonphan.user.mathmaniac.data.remote.MathManiacRemoteRepository
-import com.sonphan.user.mathmaniac.ui.play.PlayActivity
+import com.sonphan.mathmaniac.ui.play.PlayActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main_menu.*
 

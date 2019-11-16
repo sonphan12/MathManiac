@@ -1,4 +1,4 @@
-package com.sonphan.user.mathmaniac.data
+package com.sonphan.mathmaniac.data
 
 object SharedPreferencesConstants {
     const val HIGH_SCORE_NAME = "highScore"

@@ -5,8 +5,8 @@ import com.facebook.GraphRequest
 import com.facebook.GraphResponse
 import com.google.gson.Gson
 import com.google.gson.JsonParser
-import com.sonphan.user.mathmaniac.data.model.RemoteFacebookFriend
-import com.sonphan.user.mathmaniac.ultility.UserUtil
+import com.sonphan.mathmaniac.data.model.RemoteFacebookFriend
+import com.sonphan.mathmaniac.ultility.UserUtil
 import io.reactivex.Observable
 import java.util.*
 import kotlin.collections.ArrayList

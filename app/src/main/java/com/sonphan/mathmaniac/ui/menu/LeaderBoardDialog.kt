@@ -1,4 +1,4 @@
-package com.sonphan.user.mathmaniac.ui.menu
+package com.sonphan.mathmaniac.ui.menu
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.user.mathmaniac.R
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.LocalPlayer
 import kotlinx.android.synthetic.main.dialog_leaderboard.*
 
 class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {

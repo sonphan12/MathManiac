@@ -1,7 +1,7 @@
-package com.sonphan.user.mathmaniac.ultility
+package com.sonphan.mathmaniac.ultility
 
 import com.facebook.AccessToken
-import com.sonphan.user.mathmaniac.data.model.User
+import com.sonphan.mathmaniac.data.model.User
 
 class UserUtil {
     companion object {

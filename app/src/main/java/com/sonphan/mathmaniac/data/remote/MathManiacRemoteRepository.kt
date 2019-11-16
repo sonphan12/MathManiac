@@ -2,7 +2,7 @@ package com.sonphan.user.mathmaniac.data.remote
 
 import com.parse.ParseObject
 import com.parse.ParseQuery
-import com.sonphan.user.mathmaniac.data.model.RemotePlayer
+import com.sonphan.mathmaniac.data.model.RemotePlayer
 import io.reactivex.Observable
 
 class MathManiacRemoteRepository : MathManiacRemoteStore.Repository {

@@ -1,7 +1,7 @@
-package com.sonphan.user.mathmaniac.data.local
+package com.sonphan.mathmaniac.data.local
 
-import com.sonphan.user.mathmaniac.data.model.LocalFacebookFriend
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.LocalFacebookFriend
+import com.sonphan.mathmaniac.data.model.LocalPlayer
 import io.reactivex.Observable
 
 interface MathManiacLocalStore {

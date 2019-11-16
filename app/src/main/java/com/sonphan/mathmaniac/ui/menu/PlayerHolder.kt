@@ -1,9 +1,9 @@
-package com.sonphan.user.mathmaniac.ui.menu
+package com.sonphan.mathmaniac.ui.menu
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.bumptech.glide.Glide
-import com.sonphan.user.mathmaniac.data.model.LocalPlayer
+import com.sonphan.mathmaniac.data.model.LocalPlayer
 import kotlinx.android.synthetic.main.item_player.view.*
 
 class PlayerHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {

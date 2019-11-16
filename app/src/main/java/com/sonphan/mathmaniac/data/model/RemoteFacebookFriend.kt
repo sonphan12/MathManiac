@@ -1,4 +1,4 @@
-package com.sonphan.user.mathmaniac.data.model
+package com.sonphan.mathmaniac.data.model
 
 import com.google.gson.annotations.SerializedName
 
