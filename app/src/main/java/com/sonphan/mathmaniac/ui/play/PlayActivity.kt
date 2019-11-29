@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import com.sonphan.mathmaniac.R
 import com.sonphan.mathmaniac.data.SharedPreferencesConstants
+import com.sonphan.user.mathmaniac.R
 import kotlinx.android.synthetic.main.activity_play.*
 import java.util.*
 

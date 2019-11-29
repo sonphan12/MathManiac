@@ -3,6 +3,7 @@ package com.sonphan.mathmaniac.ui.menu
 import android.net.Uri
 import android.util.Log
 import com.facebook.AccessToken
+import com.facebook.Profile
 import com.sonphan.mathmaniac.data.local.MathManiacRepository
 import com.sonphan.mathmaniac.data.model.Player
 import com.sonphan.mathmaniac.ui.BasePresenter
@@ -15,9 +16,9 @@ class MainMenuPresenter constructor(private val repository: MathManiacRepository
         view?.navigateToPlay()
     }
 
-    fun onLoginSuccess(id: String, name: String, profilePictureUri: Uri, currentAccessToken: AccessToken) {
+    fun onLoginSuccess(profile: Profile, currentAccessToken: AccessToken) {
         view?.toastLoginSuccess()
-        putCurrentUser(id, name, profilePictureUri, currentAccessToken)
+        putCurrentUser(profile.id, profile.name, profile.getProfilePictureUri(60, 60), currentAccessToken)
         fetchListFacebookFriends()
     }
 

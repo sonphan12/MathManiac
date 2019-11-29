@@ -1,11 +1,14 @@
 package com.sonphan.mathmaniac
 
 import android.app.Application
+import com.facebook.Profile
 import com.parse.Parse
 import com.sonphan.mathmaniac.data.model.DaoMaster
 import com.sonphan.mathmaniac.data.model.DaoSession
 import com.sonphan.mathmaniac.data.model.FacebookFriendEntityDao
 import com.sonphan.mathmaniac.data.model.PlayerEntityDao
+import com.sonphan.mathmaniac.ultility.UserManager
+import com.sonphan.user.mathmaniac.R
 
 class AndroidApplication : Application() {
     private lateinit var mDaoMaster: DaoMaster

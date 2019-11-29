@@ -4,8 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.sonphan.mathmaniac.R
 import com.sonphan.mathmaniac.data.model.Player
+import com.sonphan.user.mathmaniac.R
 import kotlinx.android.synthetic.main.dialog_leaderboard.*
 
 class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
