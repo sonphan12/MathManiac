@@ -6,11 +6,11 @@ import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import com.example.user.mathmaniac.R
+import com.sonphan.mathmaniac.R
 import com.sonphan.mathmaniac.data.SharedPreferencesConstants
 import kotlinx.android.synthetic.main.activity_play.*
 import java.util.*

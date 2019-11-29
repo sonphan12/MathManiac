@@ -1,7 +1,6 @@
 package com.sonphan.mathmaniac
 
 import android.app.Application
-import com.example.user.mathmaniac.R
 import com.parse.Parse
 import com.sonphan.mathmaniac.data.model.DaoMaster
 import com.sonphan.mathmaniac.data.model.DaoSession

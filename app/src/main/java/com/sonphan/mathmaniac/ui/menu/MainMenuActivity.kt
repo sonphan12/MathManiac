@@ -2,12 +2,12 @@ package com.sonphan.mathmaniac.ui.menu
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import com.example.user.mathmaniac.R
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.sonphan.mathmaniac.AndroidApplication
+import com.sonphan.mathmaniac.R
 import com.sonphan.mathmaniac.data.FacebookPermissionConstants
 import com.sonphan.mathmaniac.data.local.MathManiacRepositoryImpl
 import com.sonphan.mathmaniac.data.model.Player
