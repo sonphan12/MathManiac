@@ -11,4 +11,7 @@ object UserManager {
                  avatarUrl: String, accessToken: AccessToken) {
         user = User(fbId, displayName, avatarUrl, accessToken)
     }
+
+    fun hasUser() = (user != null)
+
 }

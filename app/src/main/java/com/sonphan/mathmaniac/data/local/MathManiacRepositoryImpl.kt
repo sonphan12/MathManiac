@@ -1,21 +1,28 @@
 package com.sonphan.mathmaniac.data.local
 
-import android.content.Context
 import android.util.Log
 import com.facebook.GraphRequest
-import com.parse.ParseException
 import com.parse.ParseObject
 import com.parse.ParseQuery
-import com.sonphan.mathmaniac.data.*
-import com.sonphan.mathmaniac.data.model.*
+import com.sonphan.mathmaniac.AndroidApplication
+import com.sonphan.mathmaniac.data.model.FacebookFriend
+import com.sonphan.mathmaniac.data.model.FacebookFriendEntityDao
+import com.sonphan.mathmaniac.data.model.Player
+import com.sonphan.mathmaniac.data.model.PlayerEntityDao
+import com.sonphan.mathmaniac.data.toEntity
+import com.sonphan.mathmaniac.data.toFacebookFriend
+import com.sonphan.mathmaniac.data.toListFbFriend
+import com.sonphan.mathmaniac.data.toPlayer
 import com.sonphan.mathmaniac.ultility.UserManager
 import io.reactivex.Observable
-import io.reactivex.ObservableSource
+import io.reactivex.Scheduler
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class MathManiacRepositoryImpl constructor(private val playerDao: PlayerEntityDao,
-                                           private val facebookFriendDao: FacebookFriendEntityDao,
-                                           private val context: Context) : MathManiacRepository {
+class MathManiacRepositoryImpl private constructor(private val playerDao: PlayerEntityDao,
+                                                   private val facebookFriendDao: FacebookFriendEntityDao
+) : MathManiacRepository {
 
     override fun putPlayers(vararg players: Player): Observable<Boolean> =
             Observable.create<Boolean> {
@@ -29,17 +36,34 @@ class MathManiacRepositoryImpl constructor(private val playerDao: PlayerEntityDa
 
     private fun putPlayersToParse(vararg players: Player): Observable<Boolean> =
             Observable.fromIterable(players.toList())
-                    .flatMap { player ->
-                        Observable.create<Boolean> {
-                            player.player.saveInBackground { e ->
-                                if (e != null) {
-                                    it.onError(e)
+                    .flatMap { updateParseObject(it) }
+                    .flatMap { parseObject ->
+                        Observable.create<Boolean> { emitter ->
+                            parseObject.saveInBackground { e ->
+                                if (e == null) {
+                                    emitter.onNext(true)
                                 } else {
-                                    it.onNext(true)
+                                    emitter.onError(e)
                                 }
                             }
                         }
                     }
+
+    private fun updateParseObject(player: Player): Observable<ParseObject> =
+            Observable.create {
+                ParseQuery.getQuery<ParseObject>("Player")
+                        .whereEqualTo("fbId", player.id)
+                        .getFirstInBackground { result, e ->
+                            if (e == null) {
+                                it.onNext(result.apply {
+                                    put("highScore", player.highScore)
+                                })
+                            } else {
+                                it.onNext(player.player)
+                            }
+                            it.onComplete()
+                        }
+            }
 
 
     override fun getPlayer(fbId: Long): Observable<Player> {
@@ -54,13 +78,23 @@ class MathManiacRepositoryImpl constructor(private val playerDao: PlayerEntityDa
         }
     }
 
-    override fun getCurrentHighScore(): Observable<Int> {
-        return Observable.create {
-            val sharedPref = context.getSharedPreferences(SharedPreferencesConstants.HIGH_SCORE_NAME, Context.MODE_PRIVATE)
-            it.onNext(sharedPref.getInt(SharedPreferencesConstants.HIGH_SCORE_KEY, 0))
-            it.onComplete()
-        }
-    }
+    override fun getHighScore(fbId: Long): Observable<Int> =
+            getPlayer(fbId)
+                    .map { it.highScore }
+
+    override fun setHighScore(fbId: Long, highScore: Int): Observable<Boolean> =
+            getPlayer(fbId)
+                    .flatMap {
+                        putPlayers(
+                                Player(
+                                        it.id,
+                                        it.name,
+                                        it.avatarUrl,
+                                        highScore
+                                )
+                        )
+                    }
+                    .map { true }
 
     override fun putFacebookFriends(friends: List<FacebookFriend>): Observable<Boolean> {
         return Observable.create {
@@ -97,5 +131,13 @@ class MathManiacRepositoryImpl constructor(private val playerDao: PlayerEntityDa
                     .flatMap { listFbFriends ->
                         putFacebookFriends(listFbFriends)
                     }
+
+    companion object {
+        val instance: MathManiacRepository by lazy {
+            MathManiacRepositoryImpl(
+                    AndroidApplication.instance.playerDao,
+                    AndroidApplication.instance.mfacebookFriendDao)
+        }
+    }
 
 }

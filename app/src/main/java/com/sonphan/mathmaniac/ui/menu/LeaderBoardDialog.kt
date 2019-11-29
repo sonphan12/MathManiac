@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sonphan.mathmaniac.data.model.Player
 import com.sonphan.user.mathmaniac.R
 import kotlinx.android.synthetic.main.dialog_leaderboard.*
@@ -15,7 +16,8 @@ class LeaderBoardDialog(mContext: Context) : Dialog(mContext) {
         this.setContentView(R.layout.dialog_leaderboard)
         mAdapter = LeaderBoardAdapter(mContext, ArrayList())
         rvLeaderBoard.adapter = mAdapter
-        rvLeaderBoard.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mContext)
+        rvLeaderBoard.layoutManager = LinearLayoutManager(mContext)
+        btnClose.setOnClickListener { dismiss() }
     }
 
     fun setData(listData: List<Player>) = mAdapter.setListData(listData)

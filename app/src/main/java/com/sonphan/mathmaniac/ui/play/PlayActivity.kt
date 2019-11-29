@@ -6,12 +6,17 @@ import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.sonphan.mathmaniac.data.SharedPreferencesConstants
+import com.sonphan.mathmaniac.data.local.MathManiacRepositoryImpl
+import com.sonphan.mathmaniac.ultility.UserManager
 import com.sonphan.user.mathmaniac.R
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_play.*
 import java.util.*
 
@@ -153,12 +158,29 @@ class PlayActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        saveHighScore()
+        playSuccess?.release()
+        playGameOver?.release()
+    }
+
+    private fun saveHighScore() {
         val pref = getSharedPreferences("highScore", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putInt("highScore", vHighScore)
         editor.apply()
-        playSuccess?.release()
-        playGameOver?.release()
+
+        if (UserManager.hasUser()) {
+            UserManager.user?.fbId?.let {
+                MathManiacRepositoryImpl.instance.setHighScore(
+                        it,
+                        vHighScore
+                )
+                        .subscribeOn(Schedulers.io())
+                        .subscribeBy(
+                                onError = { e -> Log.w(this::class.java.toString(), e.message) }
+                        )
+            }
+        }
     }
 
     private fun lose(isHighScore: Boolean) {

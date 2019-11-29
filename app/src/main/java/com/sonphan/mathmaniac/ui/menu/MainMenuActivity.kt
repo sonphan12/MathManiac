@@ -1,5 +1,6 @@
 package com.sonphan.mathmaniac.ui.menu
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import com.sonphan.mathmaniac.ui.play.PlayActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main_menu.*
 import com.facebook.Profile.getCurrentProfile
+import com.sonphan.mathmaniac.data.SharedPreferencesConstants
 import com.sonphan.user.mathmaniac.R
 
 
@@ -26,15 +28,9 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
         mPresenter = MainMenuPresenter(
-                MathManiacRepositoryImpl(
-                        (this.application as AndroidApplication).playerDao,
-                        (this.application as AndroidApplication).mfacebookFriendDao,
-                        this.applicationContext
-                )
+                MathManiacRepositoryImpl.instance,
+                getSharedPreferences(SharedPreferencesConstants.HIGH_SCORE_NAME, Context.MODE_PRIVATE)
         )
-        getCurrentProfile()?.let {
-            mPresenter.onLoginSuccess(it, AccessToken.getCurrentAccessToken())
-        }
         addListeners()
         initLoginFacebook()
     }
@@ -51,7 +47,7 @@ class MainMenuActivity : AppCompatActivity(), IMainMenuView {
                 getCurrentProfile()?.let {
                     mPresenter.onLoginSuccess(it, result.accessToken)
                 } ?: run {
-                     object : ProfileTracker() {
+                    object : ProfileTracker() {
                         override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
                             currentProfile?.let {
                                 mPresenter.onLoginSuccess(currentProfile, AccessToken.getCurrentAccessToken())
